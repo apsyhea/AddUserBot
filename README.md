@@ -6,8 +6,8 @@ Telegram Add UserBot - это скрипт для автоматического
 
 Для работы скрипта вам потребуется:
 
-- Python 3.6+
-- Git
+- Python 3.6+ устанавливается из Windows Store
+- Git https://gitforwindows.org/
 - Установленные зависимости, перечисленные в `requirements.txt`
 - Зайти и авторизоваться на сайте https://my.telegram.org/apps и создать API конфигурацию.
 
