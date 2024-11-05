@@ -8,7 +8,7 @@ def get_random_hash(phone_number):
     try:
         return response.json()['random_hash']
     except (KeyError, ValueError) as e:
-        print('Ошибка получения random_hash. Возможно, слишком много попыток.')
+        print('Ошибка получения random_hash.\nВозможно, слишком много попыток.')
         return None
 
 def authenticate(phone_number, random_hash, password):
