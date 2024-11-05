@@ -4,10 +4,15 @@ import asyncio
 from telethon.tl.functions.channels import InviteToChannelRequest
 from tqdm import tqdm
 
-# Проверка наличия config.py
-if not os.path.isfile("config.py"):
-    from create_config import create_config
-    create_config()
+def create_config_if_needed():
+    # Проверка наличия config.py
+    if not os.path.isfile("config.py"):
+        from create_config import create_config
+        create_config()
+        if not os.path.isfile("config.py"):
+            exit(1)
+
+create_config_if_needed()
 
 # Импортирование конфигурации после её создания
 import config
