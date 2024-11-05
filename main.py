@@ -1,8 +1,16 @@
+import os
 from telethon import TelegramClient, types
-import config
 import asyncio
 from telethon.tl.functions.channels import InviteToChannelRequest
 from tqdm import tqdm
+
+# Проверка наличия config.py
+if not os.path.isfile("config.py"):
+    from create_config import create_config
+    create_config()
+
+# Импортирование конфигурации после её создания
+import config
 
 client = TelegramClient('session_name', config.api_id, config.api_hash)
 
@@ -41,8 +49,8 @@ async def main():
                     count += 1  # Увеличиваем счетчик успешных приглашений
                     pbar.update(1)  # Обновляем строку прогресса
                 except Exception as e:
-                    if "A wait of" not in str(e):  # Исключаем сообщения о задержке
-                        print(f'Failed to add user {user.id}: {e}')
+                    if "A wait of" in str(e) or "Bots can only be admins in channels" in str(e):
+                        continue  # Пропускаем сообщения о задержке и административных ограничениях
 
     # Сохраняем обновленный список добавленных пользователей в файл
     with open("added_users.txt", "w") as file:
