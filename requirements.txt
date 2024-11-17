@@ -4,3 +4,4 @@ pyasn1==0.6.1
 rsa==4.9
 Telethon==1.37.0
 tqdm==4.66.6
+requests==2.32.3

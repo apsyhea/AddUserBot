@@ -1,5 +1,9 @@
-config.py
+venv/
 __pycache__/
-myenv/
-added_users.txt
-session_name.session
+*.pyc
+data/added_users.txt
+data/participants_cache.pkl
+data/session_name.session
+src/config.py
+.idea/
+.vscode/
