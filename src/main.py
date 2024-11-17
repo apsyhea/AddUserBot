@@ -31,7 +31,7 @@ client = TelegramClient(session_file, config.api_id, config.api_hash)
 print_title()
 invite_count = get_invite_count()
 print_separator()
-chat_id_input = input("Введите ID чата или ссылку: ")
+chat_id_input = input('[Откуда?] Введите ID чата или ссылку: ')
 print_separator()
 
 async def main():
@@ -55,7 +55,7 @@ async def main():
         print(e)
         return
 
-    channel_url = input('Введите URL канала, куда будут добавляться пользователи: ')
+    channel_url = input('[Куда?] Введите ID чата или ссылку: ')
     print_separator()
     channel_id = int(channel_url) if channel_url.isdigit() else await get_channel_id(client, channel_url)
     if channel_id is None:
