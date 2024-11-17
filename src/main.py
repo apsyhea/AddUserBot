@@ -37,9 +37,15 @@ print_separator()
 async def main():
     await client.start(config.phone_number)
 
-    chat_id = int(chat_id_input) if chat_id_input.isdigit() else chat_id_input
-
     try:
+        # Проверка типа входного значения
+        if chat_id_input.startswith('https://'):
+            chat_id = await client.get_peer_id(chat_id_input)
+        elif chat_id_input.isdigit():
+            chat_id = int(chat_id_input)
+        else:
+            raise ValueError("Некорректный ID или ссылка.")
+        
         chat_info = await get_channel_info(client, chat_id)
         if not chat_info:
             print("Ошибка при получении информации о чате.")
