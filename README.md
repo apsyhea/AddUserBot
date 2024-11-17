@@ -32,7 +32,7 @@ Telegram Add UserBot - это скрипт для автоматического
    ```sh
     python -m venv myenv
     source myenv/bin/activate  # Для Unix или MacOS
-    myenv\Scripts\activate     # Для Windows
+    source myenv/Scripts/Activate     # Для Windows
 
 3. Установите зависимости:
    ```sh
