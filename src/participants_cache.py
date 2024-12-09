@@ -1,7 +1,7 @@
 import os
 import pickle
 
-# Указание правильного пути для кэша в корневом каталоге проекта
+# Specify the correct path for the cache in the root directory of the project
 base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 cache_dir = os.path.join(base_dir, 'data')
 if not os.path.exists(cache_dir):

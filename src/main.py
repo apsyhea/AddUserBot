@@ -19,10 +19,10 @@ def print_title():
     print(title)
 
 def print_channel_info(title, channel_id):
-    print(f"{'Название канала:':<25} {title}")
-    print(f"{'ID канала:':<25} {channel_id}\n{'='*75}")
+    print(f"{'Channel name:':<25} {title}")
+    print(f"{'Channel ID:':<25} {channel_id}\n{'='*75}")
 
-# Убедимся, что каталог data существует в корневом каталоге проекта
+# Ensure the data directory exists in the root directory of the project
 base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 data_dir = os.path.join(base_dir, 'data')
 if not os.path.exists(data_dir):
@@ -34,46 +34,51 @@ client = TelegramClient(session_file, config.api_id, config.api_hash)
 print_title()
 invite_count = get_invite_count()
 print_separator()
-chat_id_input = input('[Откуда?] Введите ID чата или ссылку: ')
-print_separator()
 
-async def main():
-    await client.start(config.phone_number)
-
-    try:
-        # Проверка типа входного значения
-        if chat_id_input.startswith('https://'):
-            chat_id = await client.get_peer_id(chat_id_input)
-        elif chat_id_input.isdigit():
-            chat_id = int(chat_id_input)
-        else:
-            raise ValueError("Некорректный ID или ссылка.")
-        
-        chat_info = await get_channel_info(client, chat_id)
-        if not chat_info:
-            print("Ошибка при получении информации о чате.")
-            return
-        print_channel_info(chat_info['title'], chat_info['id'])
-    except ValueError as e:
-        print(e)
-        return
-
-    channel_url = input('[Куда?] Введите ID чата или ссылку: ')
+try:
+    chat_id_input = input('[From?] Enter chat ID or link: ')
     print_separator()
-    channel_id = int(channel_url) if channel_url.isdigit() else await get_channel_id(client, channel_url)
-    if channel_id is None:
-        return
 
-    channel_info = await get_channel_info(client, channel_id)
-    if not channel_info:
-        print("Ошибка при получении информации о канале.")
-        return
-    print_channel_info(channel_info['title'], channel_info['id'])
+    async def main():
+        await client.start(config.phone_number)
 
-    error_occurred = await invite_users(client, chat_id, channel_id, invite_count)
-    if error_occurred:
-        print(f"\n{'='*75}\nОшибка: {error_occurred}\n{'='*75}")
+        try:
+            # Check the type of input value
+            if chat_id_input.startswith('https://'):
+                chat_id = await client.get_peer_id(chat_id_input)
+            elif chat_id_input.isdigit():
+                chat_id = int(chat_id_input)
+            else:
+                raise ValueError("Invalid ID or link.")
+            
+            chat_info = await get_channel_info(client, chat_id)
+            if not chat_info:
+                print("Error retrieving chat information.")
+                return
+            print_channel_info(chat_info['title'], chat_info['id'])
+        except ValueError as e:
+            print(e)
+            return
 
-    await client.disconnect()
+        channel_url = input('[To?] Enter chat ID or link: ')
+        print_separator()
+        channel_id = int(channel_url) if channel_url.isdigit() else await get_channel_id(client, channel_url)
+        if channel_id is None:
+            return
 
-asyncio.run(main())
+        channel_info = await get_channel_info(client, channel_id)
+        if not channel_info:
+            print("Error retrieving channel information.")
+            return
+        print_channel_info(channel_info['title'], channel_info['id'])
+
+        error_occurred = await invite_users(client, chat_id, channel_id, invite_count)
+        if error_occurred:
+            print(f"\n{'='*75}\nError: {error_occurred}\n{'='*75}")
+
+        await client.disconnect()
+
+    asyncio.run(main())
+
+except KeyboardInterrupt:
+    print("\nOperation aborted.")
