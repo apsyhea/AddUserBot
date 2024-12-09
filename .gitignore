@@ -1,9 +1,9 @@
 .venv/
 __pycache__/
 *.pyc
-data/added_users.txt
-data/participants_cache.pkl
-data/session_name.session
+data/
 src/config.py
+src/.gitattributes
 .idea/
 .vscode/
+logs/invite.log
