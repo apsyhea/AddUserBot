@@ -31,8 +31,8 @@ All further actions are performed in the terminal for Windows/Linux or Termux on
 2. Create a virtual environment and activate it:
    ```sh
     python -m venv venv
-    source venv/bin/activate  # Для Unix или MacOS
-    source venv/Scripts/Activate     # Для Windows
+    source venv/bin/activate  # For Unix or MacOS
+    source venv/Scripts/Activate  # For Windows
 
 3. Install dependencies:
    ```sh
