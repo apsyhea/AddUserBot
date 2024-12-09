@@ -3,7 +3,6 @@ __pycache__/
 *.pyc
 data/
 src/config.py
-src/.gitattributes
 .idea/
 .vscode/
 logs/invite.log
