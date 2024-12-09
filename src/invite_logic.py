@@ -1,7 +1,6 @@
 import asyncio
 from telethon import types
 from telethon.tl.functions.channels import InviteToChannelRequest
-from tqdm import tqdm
 import time
 import os
 from participants_cache import load_cache, save_cache
@@ -47,7 +46,7 @@ async def invite_users(client, chat_id, channel_id, invite_count):
     count = 0
     error_message = None
 
-    for user in tqdm(participants):
+    for user in participants:
         if count >= invite_count:
             break
 
