@@ -1,105 +1,108 @@
 # Telegram Add UserBot
 
-Telegram Add UserBot - это скрипт для автоматического добавления пользователей из одного чата в другой чат или канал на основе библиотеки Telethon.
+Telegram Add UserBot is a script for automatically adding users from one chat to another chat or channel using the Telethon library.
 
-## Требования
+## Requirements
 
-Поддерживаемые платформы:
+Supported platforms:
 - Windows
 - Linux
 - Android+trmux (NON ROOT)
 
-Для работы скрипта вам потребуется:
+To run the script, you will need:
 
 - Python 3.6+
 - Git
-- Установленные зависимости, перечисленные в `requirements.txt`
-- Авторизоваться на сайте https://my.telegram.org/apps и создать API конфигурацию.
+- Installed dependencies listed in `requirements.txt`
+- Authorization on https://my.telegram.org/appsand creation of an API configuration.
 
-# Важно!
-Если вы используете Windows, необходимо скачать и установить GIT (https://gitforwindows.org/), а также Python 3 из магазина приложений Windows Store.
+# Important!
+If you are using Windows, you need to download and install GIT (https://gitforwindows.org/) and Python 3 from the Windows Store.
 
-## Установка
+## Installation
 
-Все дальнейшие действия проводятся в терминале Windows/Linux или Termux на Android.
+All further actions are performed in the terminal for Windows/Linux or Termux on Android.
 
-1. Клонируйте репозиторий:
+1. Clone the repository:
 
    ```sh
    git clone https://github.com/apsyhea/AddUserBot.git
    cd AddUserBot
-2. Создайте виртуальное окружение и активируйте его:
+2. Create a virtual environment and activate it:
    ```sh
     python -m venv venv
-    source venv/bin/activate  # Для Unix или MacOS
-    source venv/Scripts/Activate     # Для Windows
+    source venv/bin/activate  # For Unix or MacOS
+    source venv/Scripts/Activate  # For Windows
 
-3. Установите зависимости:
+3. Install dependencies:
    ```sh
    pip install -r requirements.txt
    ```
 
-4. Создайте файл `config.py`и добавьте ваши учетные данные:
+4. After the next launch, a file `accounts.ini` with the following content will be created in the `data` directory:
    ```sh
-   # config.py
-   api_id = 'your_api_id'
-   api_hash = 'your_api_hash'
-   phone_number = 'your_phone_number'
-   ```   
-## Использование
-1. Запустите скрипт:
+   [account_1]
+   phone_number = your_phone_number
+   api_id = your_api_id
+   api_hash = your_api_hash
+   ```
+You need to fill it in for the script to work. Each new account should contain a new block (e.g., [account_2]).
+
+## Usage
+1. Run the script:
    ```sh
    python main.py
    ```
-2. Введите количество приглашений, ID чата и ID канала, куда будут добавляться пользователи:
+2. Enter the number of invitations, chat ID and channel ID where users will be added:
    ```sh
-   Введите количество приглашений: 100
-   [Откуда?] Введите ID чата или ссылку:  123456789
-   [Куда?] Введите ID чата или ссылку: 987654321
+   Enter the number of invitations: 100
+   [From?] Enter chat ID or link: 123456789
+   [To?] Enter chat ID or link: 987654321
    ```
-3. Скрипт начнет добавлять пользователей, отображая прогресс.
-### Примерный вывод программы (В данном случае получены ограничения от Телеграмм, см. пункт "Важно" ниже.)
+3. The script will start adding users, displaying the progress.
+### Example output of the program (In this case, Telegram restrictions were encountered, see the "Important" section below.)
    ```sh
    python src/main.py
-
+   
        ___   ___  ___  __  _____________  ___  ____  ______
       / _ | / _ \/ _ \/ / / / __/ __/ _ \/ _ )/ __ \/_  __/
      / __ |/ // / // / /_/ /\ \/ _// , _/ _  / /_/ / / /
     /_/ |_/____/____/\____/___/___/_/|_/____/\____/ /_/
    
-   Введите количество приглашений: 10
+   Enter the number of invitations: 10
    
    ===========================================================================
    
-   [Откуда?] Введите ID чата или ссылку: 1655265504
+   [From?] Enter chat ID or link: 1655265504
    
    ===========================================================================
    
-   Название канала:          TEST Chat
-   ID канала:                123456789
+   Channel name:          TEST Chat
+   Channel ID:            123456789
    ===========================================================================
-   [Куда?] Введите ID чата или ссылку: 1960888592
+   [To?] Enter chat ID or link: 1960888592
    
    ===========================================================================
    
-   Название канала:          TEST Chanel
-   ID канала:                987654321
+   Channel name:          TEST Channel
+   Channel ID:            987654321
    ===========================================================================
-   Количество участников в чате: 6530 (из кэша)
+   Number of participants in the chat: 6611 (from cache)
    
    ===========================================================================
-   Ошибка: Требуется ожидание 5 ч 54 м 26 с.
+   Error: A wait of 2 hours 20 minutes 21 seconds is required.
+   Full error message: A wait of 8421 seconds is required (caused by InviteToChannelRequest)
    ===========================================================================
+
    ```
 
-## Важно
-Убедитесь, что у вас есть права в канале или чате куда добавляются пользователи.
-При первом запуске у вас запросит код подтверждения и пароль от аккаунта в случае если у вас 2fa
-Ограниченя из вывода выше, это временные ограничения на приглашения пользователей, они не связаны со спам блоком.
-Скрипт записывает уже добавленных пользователей в файл `added_users.txt`, чтобы избежать повторных запросов.
+## Important
+Make sure you have the necessary permissions in the channel or chat where users are being added. At the first launch, you will be asked for a confirmation code and account password if you have 2fa enabled. The restrictions in the output above are temporary limitations on user invitations and are not related to spam blocking. The script logs already added users in the `added_users.txt` file to avoid duplicate requests.
 
-Обратите внимание, большое колличество одновременных приглашений повелкут за собой нежелательные жалобы пользователей что грозит спам-блокировкой аккаунта.
+Please note that a large number of simultaneous invitations can lead to unwanted complaints from users, which may result in spam blocking of the account.
 
-## Лицензия
-Этот проект лицензирован на условиях лицензии MIT. См. LICENSE для подробностей.
+## License
+This project is licensed under the terms of the MIT license. See LICENSE for details.
+
+If you need any further assistance or modifications, feel free to ask!
 
