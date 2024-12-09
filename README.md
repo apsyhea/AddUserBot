@@ -88,11 +88,10 @@ You need to fill it in for the script to work. Each new account should contain a
    Channel ID:            987654321
    ===========================================================================
    Number of participants in the chat: 6611 (from cache)
-     0%|                                                                                                                                                | 2/6611 [00:04<3:50:28,  2.09s/it]
    
    ===========================================================================
-   Error: A wait of 2 hours 23 minutes 22 seconds is required.
-   Full error message: A wait of 8602 seconds is required (caused by InviteToChannelRequest)
+   Error: A wait of 2 hours 20 minutes 21 seconds is required.
+   Full error message: A wait of 8421 seconds is required (caused by InviteToChannelRequest)
    ===========================================================================
 
    ```
