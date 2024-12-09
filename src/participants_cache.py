@@ -1,15 +1,20 @@
-# participants_cache.py
-import pickle
 import os
+import pickle
 
-CACHE_FILE = os.path.join('data', 'participants_cache.pkl')
+# Указание правильного пути для кэша в корневом каталоге проекта
+base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+cache_dir = os.path.join(base_dir, 'data')
+if not os.path.exists(cache_dir):
+    os.makedirs(cache_dir)
+cache_file = os.path.join(cache_dir, 'participants_cache.pkl')
 
 def load_cache():
-    if os.path.exists(CACHE_FILE):
-        with open(CACHE_FILE, "rb") as file:
-            return pickle.load(file)
-    return {}
+    try:
+        with open(cache_file, 'rb') as f:
+            return pickle.load(f)
+    except FileNotFoundError:
+        return {}
 
 def save_cache(cache):
-    with open(CACHE_FILE, "wb") as file:
-        pickle.dump(cache, file)
+    with open(cache_file, 'wb') as f:
+        pickle.dump(cache, f)

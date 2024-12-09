@@ -1,4 +1,3 @@
-# main.py
 import asyncio
 from telethon import TelegramClient, types
 from user_input import get_invite_count
@@ -23,9 +22,13 @@ def print_channel_info(title, channel_id):
     print(f"{'Название канала:':<25} {title}")
     print(f"{'ID канала:':<25} {channel_id}\n{'='*75}")
 
-# Инициализация клиента
-base_dir = os.path.dirname(os.path.abspath(__file__))
-session_file = os.path.join(base_dir, '..', 'data', 'session_name.session')
+# Убедимся, что каталог data существует в корневом каталоге проекта
+base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+data_dir = os.path.join(base_dir, 'data')
+if not os.path.exists(data_dir):
+    os.makedirs(data_dir)
+
+session_file = os.path.join(data_dir, 'session_name.session')
 client = TelegramClient(session_file, config.api_id, config.api_hash)
 
 print_title()
