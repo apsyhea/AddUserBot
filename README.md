@@ -41,11 +41,10 @@ All further actions are performed in the terminal for Windows/Linux or Termux on
 
 4. After the next launch, a file `accounts.ini` with the following content will be created in the `data` directory:
    ```sh
-   # config.py
    [account_1]
-   phone_number = +380984708935
-   api_id = 27283276
-   api_hash = 1ee1e3ab74fe375b34d255eaa777ead0
+   phone_number = your_phone_number
+   api_id = your_api_id
+   api_hash = your_api_hash
    ```
 You need to fill it in for the script to work. Each new account should contain a new block (e.g., [account_2]).
 
