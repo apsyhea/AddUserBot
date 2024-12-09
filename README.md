@@ -39,13 +39,16 @@ Telegram Add UserBot - это скрипт для автоматического
    pip install -r requirements.txt
    ```
 
-4. Создайте файл `config.py`и добавьте ваши учетные данные:
+4. После следующего запуска, в дирректории data будет создан файл `accounts.ini` следующего содержания:
    ```sh
    # config.py
-   api_id = 'your_api_id'
-   api_hash = 'your_api_hash'
-   phone_number = 'your_phone_number'
-   ```   
+   [account_1]
+   phone_number = +380984708935
+   api_id = 27283276
+   api_hash = 1ee1e3ab74fe375b34d255eaa777ead0
+   ```
+Для работы, потребуется его заполнить. Каждый новый аккаунт должен содержать новый блок (например [account_2])
+
 ## Использование
 1. Запустите скрипт:
    ```sh
