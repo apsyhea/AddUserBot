@@ -29,4 +29,7 @@ if not exist "venv\Scripts\activate" (
     deactivate
 )
 
-pause
+REM Pause to keep the window open
+echo.
+echo Press any key to exit...
+pause >nul
