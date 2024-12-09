@@ -28,9 +28,8 @@ All further actions are performed in the terminal for Windows/Linux or Termux on
    ```sh
    git clone https://github.com/apsyhea/AddUserBot.git
    cd AddUserBot
-2. Run start.bat or start.sh
-   If the first time you run the .bat script, it closes after `Running the program..` run the script again.
-
+2. Run `start.bat` or `start.sh`. If the first time you run the .bat script, it closes after `Running the program..` run the script again.
+   
 4. After the next launch, a file `accounts.ini` with the following content will be created in the `data` directory:
    ```sh
    [account_1]
