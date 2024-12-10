@@ -40,17 +40,13 @@ All further actions are performed in the terminal for Windows/Linux or Termux on
 You need to fill it in for the script to work. Each new account should contain a new block (e.g., [account_2]).
 
 ## Usage
-1. Run the script:
-   ```sh
-   python main.py
-   ```
-2. Enter the number of invitations, chat ID and channel ID where users will be added:
+1. Enter the number of invitations, chat ID and channel ID where users will be added:
    ```sh
    Enter the number of invitations: 100
    [From?] Enter chat ID or link: 123456789
    [To?] Enter chat ID or link: 987654321
    ```
-3. The script will start adding users, displaying the progress.
+2. The script will start adding users, displaying the progress.
 ### Example output of the program (In this case, Telegram restrictions were encountered, see the "Important" section below.)
    ```sh
    python src/main.py
