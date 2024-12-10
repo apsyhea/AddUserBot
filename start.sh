@@ -13,22 +13,17 @@ if [ ! -d "venv" ]; then
 
     echo "Installing dependencies..."
     pip install -r requirements.txt
-
-    echo "Running the program..."
-    python3 src/main.py
-
-    echo "Deactivating virtual environment..."
-    deactivate
 else
     echo "Activating virtual environment..."
     source venv/bin/activate
-
-    echo "Running the program..."
-    python3 src/main.py
-
-    echo "Deactivating virtual environment..."
-    deactivate
 fi
 
+echo "Running the program..."
+python3 src/main.py
+
+# Deactivate virtual environment
+deactivate
+
 # Pause to see the output before the script closes
-read -p "Press [Enter] key to continue..."
+echo "Press [Enter] to continue..."
+read

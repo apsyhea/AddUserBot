@@ -12,22 +12,14 @@ if not exist "venv\Scripts\activate" (
 
     echo Installing dependencies...
     pip install -r requirements.txt
-
-    echo Running the program...
-    python src\main.py
-
-    echo Deactivating virtual environment...
-    deactivate
-) else (
-    echo Activating virtual environment...
-    call venv\Scripts\activate
-
-    echo Running the program...
-    python src\main.py
-
-    echo Deactivating virtual environment...
-    deactivate
 )
+
+REM Activate the existing virtual environment and run the program
+echo Activating virtual environment...
+call venv\Scripts\activate
+
+echo Running the program...
+python src\main.py
 
 REM Pause to keep the window open
 echo.

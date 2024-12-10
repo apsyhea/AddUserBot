@@ -5,6 +5,7 @@ from channel_utils import get_channel_id, get_channel_info
 from invite_logic import invite_users
 from accounts import load_accounts
 import os
+import sys
 
 def print_separator():
     print("\n" + "=" * 75 + "\n")
@@ -34,7 +35,7 @@ accounts = load_accounts()
 if not accounts:
     print(f"The accounts.ini template is created in the {data_dir} path.")
     print("Please fill in your account details.")
-    exit(0)
+    sys.exit(0)
 
 print_title()
 invite_count = get_invite_count()
@@ -90,3 +91,8 @@ try:
 
 except KeyboardInterrupt:
     print("\nOperation aborted.")
+except Exception as e:
+    print(f"\nAn error occurred: {e}")
+
+print("\nPress any key to exit...")
+input()
