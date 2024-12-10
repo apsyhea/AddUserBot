@@ -7,7 +7,7 @@ Telegram Add UserBot is a script for automatically adding users from one chat to
 Supported platforms:
 - Windows
 - Linux
-- Android+trmux (NON ROOT)
+- Android+Termux (NON ROOT)
 
 To run the script, you will need:
 
