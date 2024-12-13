@@ -46,13 +46,24 @@ async def invite_users(client, chat_id, channel_id, invite_count):
     count = 0
     error_message = None
 
+    # Get the full info of the channel to obtain access_hash
+    channel_full_info = await client.get_entity(channel_id)
+    channel_access_hash = channel_full_info.access_hash
+
     for user in participants:
         if count >= invite_count:
             break
 
         if user.id not in added_users:
             try:
-                await client(InviteToChannelRequest(types.PeerChannel(channel_id), [types.InputUser(user.id, user.access_hash)]))
+                # Log channel and user details for debugging
+                logging.info(f"Channel ID: {channel_id}, Is Megagroup: {channel_full_info.megagroup}, User ID: {user.id}, User Access Hash: {user.access_hash}")
+
+                # Ensure we use InputChannel with correct access_hash for the channel
+                input_channel = types.InputChannel(channel_id, channel_access_hash)
+                input_user = types.InputUser(user.id, user.access_hash)
+                
+                await client(InviteToChannelRequest(channel=input_channel, users=[input_user]))
                 added_users.add(user.id)
                 count += 1
                 logging.info(f"User {user.id} invited successfully.")
@@ -60,17 +71,9 @@ async def invite_users(client, chat_id, channel_id, invite_count):
                 await asyncio.sleep(2)  # Delay of 2 seconds, can be increased if necessary
             except Exception as e:
                 logging.error(f"Error inviting user {user.id}: {str(e)}")
-                if "A wait of" in str(e):
-                    wait_time = int(str(e).split()[3])
-                    hours, remainder = divmod(wait_time, 3600)
-                    minutes, seconds = divmod(remainder, 60)
-                    error_message = f"A wait of {hours} hours {minutes} minutes {seconds} seconds is required. \nFull error message: {str(e)}"
-                    logging.info(error_message)
-                    return error_message
-                else:
-                    error_message = f"An error occurred: {str(e)}"
-                    logging.info(error_message)
-                    return error_message
+                error_message = f"An error occurred: {str(e)}"
+                logging.info(error_message)
+                return error_message
 
     with open(added_users_file, "w") as file:
         file.write("\n".join(map(str, added_users)))
