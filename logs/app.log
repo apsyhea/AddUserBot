@@ -1,5 +1,33 @@
-2025-03-18 21:14:53,939 - INFO - Приложение запускается...
-2025-03-18 21:15:45,551 - INFO - Приложение запускается...
-2025-03-18 21:16:01,276 - INFO - Приложение запускается...
-2025-03-18 21:17:30,350 - INFO - Приложение запускается...
-2025-03-18 21:19:03,902 - INFO - Приложение запускается...
+2025-03-21 20:04:51,414 - INFO - Приложение запускается...
+2025-03-21 20:04:54,111 - INFO - Начало работы с аккаунтом: +380633681488
+2025-03-21 20:04:54,206 - INFO - Connecting to 149.154.167.51:443/TcpFull...
+2025-03-21 20:04:54,245 - INFO - Connection to 149.154.167.51:443/TcpFull complete!
+2025-03-21 20:05:11,085 - INFO - Успешно выполнена команда для +380633681488
+2025-03-21 20:05:11,086 - INFO - Disconnecting from 149.154.167.51:443/TcpFull...
+2025-03-21 20:05:11,086 - INFO - Disconnection from 149.154.167.51:443/TcpFull complete!
+2025-03-21 20:05:11,166 - INFO - Клиент +380633681488 успешно отключён.
+2025-03-21 20:05:11,166 - INFO - Завершение работы приложения.
+2025-03-21 20:11:17,194 - INFO - Приложение запускается...
+2025-03-21 20:11:17,197 - INFO - Loaded account: +380633681488
+2025-03-21 20:11:18,966 - INFO - Invite count set to 10
+2025-03-21 20:11:18,967 - INFO - Начало работы с аккаунтом: +380633681488
+2025-03-21 20:11:19,097 - INFO - Connecting to 149.154.167.51:443/TcpFull...
+2025-03-21 20:11:19,134 - INFO - Connection to 149.154.167.51:443/TcpFull complete!
+2025-03-21 20:11:19,656 - INFO - Client initialized for +380633681488
+2025-03-21 20:11:26,972 - INFO - User input for From?: https://t.me/bunny_tox_chat
+2025-03-21 20:11:26,975 - INFO - Resolving entity: https://t.me/bunny_tox_chat
+2025-03-21 20:11:27,143 - INFO - Fetching info for entity ID: 2024771088
+2025-03-21 20:11:27,191 - INFO - Entity info retrieved: {'id': 2024771088, 'title': 'Bunny Тox /токс общение'}
+2025-03-21 20:11:27,191 - INFO - Displaying entity info: Bunny Тox /токс общение (ID: 2024771088)
+2025-03-21 20:11:35,342 - INFO - User input for To?: https://t.me/cbrphnk
+2025-03-21 20:11:35,343 - INFO - Resolving entity: https://t.me/cbrphnk
+2025-03-21 20:11:35,418 - INFO - Fetching info for entity ID: 1960888592
+2025-03-21 20:11:35,485 - INFO - Entity info retrieved: {'id': 1960888592, 'title': 'cbrphnk'}
+2025-03-21 20:11:35,486 - INFO - Displaying entity info: cbrphnk (ID: 1960888592)
+2025-03-21 20:11:35,487 - INFO - Successfully invited users from Bunny Тox /токс общение to cbrphnk
+2025-03-21 20:11:35,488 - INFO - Успешно выполнена команда для +380633681488
+2025-03-21 20:11:35,488 - INFO - Disconnecting from 149.154.167.51:443/TcpFull...
+2025-03-21 20:11:35,489 - INFO - Disconnection from 149.154.167.51:443/TcpFull complete!
+2025-03-21 20:11:35,573 - INFO - Клиент +380633681488 успешно отключён.
+2025-03-21 20:11:35,573 - INFO - Завершение работы приложения.
+2025-03-21 20:11:35,575 - INFO - Waiting for user to exit.
